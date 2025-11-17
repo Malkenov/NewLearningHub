@@ -29,4 +29,13 @@ public class HomeworkSubmission {
 
     @Column(name = "Класс")
     private String grade;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "homework_id")
+    private Homework homework;
 }

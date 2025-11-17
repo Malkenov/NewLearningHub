@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Setter
 @Getter
@@ -37,4 +38,7 @@ public class Homework {
     @OneToOne
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
+
+    @OneToMany(mappedBy = "homework")
+    private List<HomeworkSubmission> homeworkSubmission;
 }

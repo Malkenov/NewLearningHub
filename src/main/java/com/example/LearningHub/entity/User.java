@@ -21,7 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
     @Column(name = "Пароль")
@@ -39,10 +39,19 @@ public class User {
     @Column
     private LocalDateTime createdAt;
 
+    @PrePersist
+    protected void onCreate(){
+        createdAt = LocalDateTime.now();
+    }
+
+
     @OneToMany(mappedBy = "teacher")
     private List<Course> createCourse;
 
     @ManyToMany(mappedBy = "students")
     private Set<Course> enrolledCourse;
+
+    @OneToMany(mappedBy = "user")
+    private List<HomeworkSubmission> homeworkSubmissions;
 
 }
