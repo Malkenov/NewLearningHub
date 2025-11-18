@@ -19,5 +19,5 @@ public class TeacherResponseDto {
     private String name;
     private LocalDateTime createAt;
 
-    private List<Course> createCourse;
+    private List<String> createCourse;
 }

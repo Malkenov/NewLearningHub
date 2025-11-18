@@ -31,7 +31,7 @@ public class TeacherMapper {
                 .lastName(user.getLastName())
                 .name(user.getName())
                 .createAt(user.getCreatedAt())
-                .createCourse(mapCreateCourse())
+                .createCourse(mapCreateCourse(user))
                 .build();
      }
 }
