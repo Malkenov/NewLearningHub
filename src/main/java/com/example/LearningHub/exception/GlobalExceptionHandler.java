@@ -16,12 +16,27 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorResponse> handlerNotFound(NotFoundException ex){
         ErrorResponse exception = new ErrorResponse(
-                HttpStatus.BAD_REQUEST,
+                HttpStatus.NOT_FOUND,
                 ex.getMessage()
         );
         return new ResponseEntity<>(exception,HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handlerBadRequest(BadRequestException ex){
+        ErrorResponse exception = new ErrorResponse(
+                HttpStatus.BAD_REQUEST,
+                ex.getMessage()
+        );
+        return new ResponseEntity<>(exception,HttpStatus.BAD_REQUEST);
+    }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorResponse> handlerAccessDenied(AssertionError ex){
+        ErrorResponse exception = new ErrorResponse(
+                HttpStatus.FORBIDDEN,
+                ex.getMessage()
+        );
+        return new ResponseEntity<>(exception,HttpStatus.FORBIDDEN);
+    }
 }
